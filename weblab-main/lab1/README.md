@@ -4,6 +4,8 @@ Lighthouse denetimi sonucunda %96 erişilebilirlik puanı elde edilmiştir.
 
 ![Lighthouse Erişilebilirlik Skoru](./lighthouse-report.png)
 
+portföy sitesi güncellenip düzenlenecektir.
+
 # React + TypeScript + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
