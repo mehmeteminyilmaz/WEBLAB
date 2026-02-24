@@ -1,4 +1,5 @@
 Web LAB-1 & LAB-2: Semantik ve Erişilebilir Portföy
+
 📌 Proje Hakkında
 Bu proje, Web Tasarımı ve Programlama dersi kapsamında, semantik HTML5 yapısına uygun ve yüksek erişilebilirlik standartlarında geliştirilmiştir.
 
