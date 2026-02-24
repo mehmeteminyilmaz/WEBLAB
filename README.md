@@ -1,57 +1,27 @@
-Web LAB-1 & LAB-2: Semantik ve Erişilebilir Portföy Projesi 
-
+Web LAB-1 & LAB-2: Semantik ve Erişilebilir Portföy
 📌 Proje Hakkında
-Bu proje, Web Tasarımı ve Programlama dersi LAB-2 kapsamında geliştirilmiştir. Projenin temel amacı; sadece görsel değil, aynı zamanda arama motorları ve ekran okuyucular için anlamlı (semantik) ve herkes için erişilebilir bir web yapısı inşa etmektir.
-+4
+Bu proje, Web Tasarımı ve Programlama dersi kapsamında, semantik HTML5 yapısına uygun ve yüksek erişilebilirlik standartlarında geliştirilmiştir.
 
 👨‍💻 Geliştirici
 Ad Soyad: Mehmet Emin Yılmaz
+
 Öğrenci No:235541078
 
+Bölüm: Yazılım Mühendisliği
 
-🚀 Uygulanan Kriterler ve Özellikler
-Bu projede laboratuvar föyündeki değerlendirme rubriğine göre şu teknikler uygulanmıştır:
+🚀 Öne Çıkan Özellikler
+Semantik Yapı: header, nav, main, section, article ve footer etiketleri kullanıldı.
 
+Erişilebilirlik: Skip-link (İçeriğe atla) ve odak göstergesi eklendi.
 
-Semantik HTML5: <header>, <nav>, <main>, <section>, <article> ve <footer> etiketleri amacına uygun kullanılmıştır .
-+1
+Form Tasarımı: Label eşleşmeleri, ARIA rolleri ve HTML5 doğrulamaları (required, minlength) uygulandı.
 
+Başlık Düzeni: H1'den H3'e kadar doğru hiyerarşi sağlandı.
 
-Başlık Hiyerarşisi: <h1>'den <h3>'e kadar hiyerarşik sıra (sıradüzen) bozulmadan takip edilmiştir .
+📊 Lighthouse Skoru
+Proje, Google Lighthouse erişilebilirlik testinden 96/100 puan almıştır.
 
+📂 Git Süreci
+feature/semantic-portfolio dalında çalışıldı.
 
-Erişilebilir Form: Tüm input'lar <label> ile ilişkilendirilmiş, required ve minlength gibi HTML5 doğrulama öznitelikleri eklenmiştir .
-+1
-
-
-ARIA Kullanımı: Ekran okuyucular için aria-label, aria-describedby ve hata bildirimleri için role="alert" öznitelikleri tanımlanmıştır .
-+1
-
-
-Klavye Erişimi: Sayfa başına "Ana içeriğe atla" (Skip Link) bağlantısı eklenmiş ve CSS ile odak (:focus) göstergesi belirginleştirilmiştir .
-+1
-
-
-Görsel Optimizasyonu: Tüm görseller anlamlı alt metinleri ile desteklenmiştir .
-
-🛠 Kullanılan Teknolojiler
-React 18 + TypeScript
-
-Vite (Hızlı geliştirme ortamı) 
-
-CSS3 (Erişilebilir tasarım) 
-
-Git (Versiyon kontrol sistemi) 
-
-📊 Lighthouse Erişilebilirlik Raporu
-Google Lighthouse denetimi sonucunda 96/100 erişilebilirlik puanı elde edilmiştir.
-
-📂 Git Workflow Süreci
-Laboratuvar föyündeki Git iş akışı prensiplerine uygun olarak :
-
-
-feature/semantic-portfolio dalı üzerinden geliştirme yapılmıştır.
-
-Anlamlı ve açıklayıcı commit geçmişi oluşturulmuştur.
-
-Branch birleştirme (merge) işlemleri başarıyla tamamlanmıştır.
+En az 3 anlamlı commit atıldı ve merge işlemi tamamlandı.
