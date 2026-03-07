@@ -1,79 +1,40 @@
-## LAB-2 Erişilebilirlik Raporu
+# Emin'in Portfolyosu - Web Tasarımı ve Programlama LAB-3
 
+Bu proje, Web Tasarımı ve Programlama dersi kapsamında geliştirilen kişisel bir portfolyo web sitesidir. **LAB-3** ile birlikte proje tamamen responsive (duyarlı) ve modern bir tasarıma kavuşturulmuştur.
+
+## 🚀 Beklenti ve Geliştirmeler (LAB-3)
+
+LAB-3 dökümanındaki gereksinimler doğrultusunda projeye aşağıdaki modern CSS mimarileri ve teknikleri entegre edilmiştir:
+
+### 1. CSS Design Tokens ve Tema Yapısı (`tokens.css`)
+- Sitenin renk paleti, boşluk (spacing) birimleri, köşe yuvarlatmaları (border-radius) ve gölge (shadow) ayarları `:root` içerisinde CSS değişkenleri (custom properties) olarak tanımlandı.
+- Modern ve şık bir görünüm elde etmek için `Zinc/Slate` koyu tonları ile `Elegant Violet` ve `Sky Blue` gibi canlı vurgu renkleri kullanıldı.
+
+### 2. Akıcı Tipografi (Fluid Typography)
+- Font boyutları sabit piksel (px) değerleri yerine `clamp()` fonksiyonu ile dinamik hale getirildi. Bu sayede ekran genişliğine bağlı olarak metinler orantılı bir şekilde büyüyüp küçülmektedir.
+
+### 3. Esnek Kutu ve Izgara Yerleşimi (Flexbox & Grid)
+- **Flexbox:** `header` içeriği, navigasyon menüsü (`nav ul`), Hakkımda bölümü düzeni ve yetenek etiketleri (`.skill-tags`) için esnek tek boyutlu (1D) yerleşim sistemi olan Flexbox kullanıldı.
+- **CSS Grid:** "Projelerim" sekmesindeki kartların yerleşimi için iki boyutlu (2D) Grid kullanıldı. `repeat(auto-fit, minmax(320px, 1fr))` yapısı sayesinde ekran genişliği ne olursa olsun satır ve sütunlar kusursuz bir şekilde yeniden dizilmektedir.
+
+### 4. Mobile-First (Önce Mobil) Yaklaşımı
+Projenin medya sorguları (Media Queries) önce mobil görünüm esas alınarak yazıldı:
+- **Varsayılan Görünüm (0-639px):** Bütün içerik tek sütun halinde listelenir.
+- **Tablet (640px+):** `Hakkımda` kısmı ve form elemanları yan yana (yatay) akmaya başlar.
+- **Masaüstü (1024px+):** İçerik maksimum `1280px` ile sınırlanır ve Grid sistemindeki projeler en az 3 sütun olarak yatay düzende sergilenir.
+
+### 5. Güncel GitHub Entegrasyonu
+- "Projelerim" kısmına güncel, gerçek GitHub projelerim (Expense Tracker, Film Recommender vb.) dâhil edildi. Projeler kart mimarisi ve *glassmorphism* hover (üzerine gelme) efektleri ile modern bir şekilde stilize edildi.
+
+---
+
+## 📷 Ekran Görüntüleri ve Performans
+Projeye ait **Desktop (1280px)**, **Tablet (768px)** ve **Mobile (500px)** genişliklerindeki ekran görüntülerine `screenshots/` klasöründen ulaşabilirsiniz.
+
+### LAB-2 Erişilebilirlik Raporu (Geçmiş)
 Lighthouse denetimi sonucunda %96 erişilebilirlik puanı elde edilmiştir.
 
 ![Lighthouse Erişilebilirlik Skoru](./lighthouse-report.png)
 
-# React + TypeScript + Vite
-
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-## React Compiler
-
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
-
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+---
+*Proje: React + TypeScript + Vite altyapısı üzerindedir.*
