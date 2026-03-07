@@ -1,98 +1,455 @@
-:root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
+@import './styles/tokens.css';
 
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+/* ========================================
+   MOBiL VARSAYILAN (0- 639px)
+======================================== */
+/* Genel sifirlama */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
+  font-family: var(--font-sans);
+  font-size: var(--text-base);
+  line-height: 1.6;
+  color: var(--color-text);
+  background-color: var(--color-bg);
+  background-image: radial-gradient(circle at 15% 50%, rgba(79, 70, 229, 0.05), transparent 25%),
+    radial-gradient(circle at 85% 30%, rgba(6, 182, 212, 0.05), transparent 25%);
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
 }
 
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+a {
+  color: var(--color-secondary);
+  text-decoration: none;
+  transition: color var(--transition-fast);
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
+a:hover {
+  color: var(--color-primary);
 }
-/* Kriter: Focus (odak) göstergesi ASLA kaldırılmamalı [cite: 304, 305, 560, 571] */
-/* Bu kural klavye kullanıcıları için hayati önem taşır [cite: 300, 701] */
+
+/* Section'lar arasi bosluk */
+section {
+  padding: var(--space-2xl) var(--space-md);
+  position: relative;
+}
+
+/* Section basliklari */
+section h2 {
+  font-size: var(--text-3xl);
+  color: var(--color-text);
+  text-align: center;
+  margin-bottom: var(--space-2xl);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  position: relative;
+  display: inline-block;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+section h2::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 25%;
+  width: 50%;
+  height: 4px;
+  background: linear-gradient(90deg, var(--color-primary), var(--color-secondary));
+  border-radius: var(--radius-full);
+}
+
+/* Kriter: Focus (odak) gostergesi ASLA kaldirilmamali */
 :focus {
-    outline: 3px solid #2563EB;
-    outline-offset: 3px;
+  outline: 3px solid var(--color-secondary);
+  outline-offset: 3px;
 }
 
-/* Kriter: Skip link tasarımı (Normalde ekran dışında, Tab ile odaklanınca görünür) [cite: 350, 551] */
+/* Kriter: Skip link tasarimi */
 .skip-link {
-    position: absolute;
-    top: -100px;
-    left: 0;
-    background: #1E3A8A;
-    color: white;
-    padding: 8px 16px;
-    z-index: 100;
-    text-decoration: none;
+  position: absolute;
+  top: -100px;
+  left: 0;
+  background: var(--color-primary);
+  color: var(--color-text);
+  padding: var(--space-sm) var(--space-md);
+  z-index: 100;
+  text-decoration: none;
+  font-weight: bold;
 }
 
-.skip-link:focus { 
-    top: 0; /* Odaklandığında sayfanın en üstünde görünür [cite: 559] */
+.skip-link:focus {
+  top: 0;
 }
 
-/* Form Hata Mesajları Stili [cite: 593] */
-.error-msg {
-    color: red;
-    font-size: 0.85rem;
+/* ===== HEADER ===== */
+header {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--space-md) var(--space-xl);
+  background-color: rgba(30, 41, 59, 0.8);
+  /* Surface color with opacity */
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  box-shadow: var(--shadow-sm);
+}
+
+/* Logo / Site adi */
+.site-title {
+  font-size: var(--text-2xl);
+  font-weight: 800;
+  background: linear-gradient(135deg, var(--color-text) 0%, var(--color-muted) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  letter-spacing: -0.02em;
+}
+
+/* ===== NAV LISTESI ===== */
+nav ul {
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+  gap: var(--space-sm);
+  padding: 0;
+  margin: 0;
+}
+
+nav a {
+  display: inline-block;
+  padding: var(--space-xs) var(--space-md);
+  color: var(--color-muted);
+  text-decoration: none;
+  border-radius: var(--radius-full);
+  font-weight: 500;
+  transition: all var(--transition-fast);
+}
+
+nav a:hover,
+nav a:focus {
+  background-color: rgba(255, 255, 255, 0.05);
+  color: var(--color-text);
+}
+
+/* ===== MOBiLDE DiKEY YIGIN (NAV ICIN) ===== */
+@media (max-width: 639px) {
+  header {
+    flex-direction: column;
+    gap: var(--space-md);
+    padding: var(--space-md);
+  }
+
+  nav ul {
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
+
+  nav a {
     display: block;
-    margin-top: 5px;
+    text-align: center;
+    width: 100%;
+  }
+}
+
+/* Hakkimda: tek sutun, ortalanmis */
+.about-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-xl);
+  text-align: center;
+}
+
+.about-content figure {
+  max-width: 240px;
+  position: relative;
+}
+
+.about-content figure::before {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  border-radius: var(--radius-full);
+  background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+  z-index: -1;
+  filter: blur(10px);
+  opacity: 0.7;
+}
+
+.about-content img {
+  border-radius: var(--radius-full);
+  aspect-ratio: 1;
+  object-fit: cover;
+  border: 4px solid var(--color-surface);
+}
+
+.about-content p {
+  font-size: var(--text-lg);
+  color: var(--color-muted);
+  max-width: 600px;
+}
+
+/* Skill Tags Toolbar */
+.skill-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+  list-style: none;
+  padding: var(--space-md) 0;
+  justify-content: center;
+}
+
+.skill-tags li {
+  color: var(--color-secondary);
+  background-color: rgba(6, 182, 212, 0.1);
+  border: 1px solid rgba(6, 182, 212, 0.2);
+  padding: var(--space-xs) var(--space-md);
+  border-radius: var(--radius-full);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  letter-spacing: 0.05em;
+}
+
+/* ===== PROJE GRID ===== */
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: var(--space-xl);
+}
+
+/* ===== PROJE KARTI ===== */
+.project-card {
+  display: flex;
+  flex-direction: column;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  transition: all var(--transition-normal);
+  position: relative;
+}
+
+.project-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: var(--radius-lg);
+  padding: 1px;
+  background: linear-gradient(to bottom right, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.0));
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+.project-card:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-glow);
+  border-color: rgba(79, 70, 229, 0.4);
+}
+
+/* Kart icindeki gorsel */
+.project-card img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  border-bottom: 1px solid var(--color-border);
+  transition: transform var(--transition-normal);
+}
+
+.project-card:hover img {
+  transform: scale(1.05);
+}
+
+/* Kart icerigi */
+.project-card h3,
+.project-card p,
+.project-card .skill-tags {
+  padding: 0 var(--space-lg);
+  position: relative;
+  z-index: 2;
+  background: var(--color-surface);
+  /* prevent image scale overlap */
+}
+
+.project-card h3 {
+  margin-top: var(--space-lg);
+  font-size: var(--text-xl);
+  color: var(--color-text);
+  font-weight: 700;
+}
+
+.project-card p {
+  color: var(--color-muted);
+  flex-grow: 1;
+  padding-top: var(--space-sm);
+  /* icerik farkli uzunlukta olsa bile kartlarin alt kenari hizali */
+}
+
+.project-card .skill-tags {
+  padding-bottom: var(--space-lg);
+  margin-top: auto;
+  justify-content: flex-start;
+  /* Kart ici sola hizali */
+}
+
+.project-card a {
+  display: inline-block;
+  margin: 0 var(--space-lg) var(--space-lg);
+  padding: var(--space-sm) var(--space-md);
+  background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
+  color: #ffffff;
+  border-radius: var(--radius-md);
+  text-align: center;
+  font-size: var(--text-sm);
+  font-weight: 600;
+  transition: opacity var(--transition-fast), transform var(--transition-fast);
+}
+
+.project-card a:hover {
+  opacity: 0.9;
+  transform: scale(1.02);
+}
+
+
+/* Iletisim formu */
+.form-group {
+  margin-bottom: var(--space-lg);
+}
+
+label {
+  display: block;
+  margin-bottom: var(--space-xs);
+  font-weight: 500;
+  color: var(--color-muted);
+}
+
+input,
+textarea,
+select {
+  width: 100%;
+  padding: var(--space-md);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  font-family: inherit;
+  font-size: var(--text-base);
+  background-color: rgba(0, 0, 0, 0.2);
+  color: var(--color-text);
+  transition: all var(--transition-fast);
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  border-color: var(--color-primary);
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.2);
+}
+
+button[type="submit"] {
+  width: 100%;
+  padding: var(--space-md) var(--space-xl);
+  background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
+  color: #ffffff;
+  border: none;
+  border-radius: var(--radius-md);
+  font-size: var(--text-base);
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+button[type="submit"]:hover,
+button[type="submit"]:focus {
+  box-shadow: var(--shadow-glow);
+  transform: translateY(-2px);
+}
+
+.error-msg {
+  color: var(--color-error);
+  font-size: var(--text-sm);
+  display: block;
+  margin-top: 6px;
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  padding: var(--space-2xl) var(--space-md);
+  background: var(--color-surface);
+  border-top: 1px solid var(--color-border);
+  color: var(--color-muted);
+  font-size: var(--text-sm);
+  margin-top: var(--space-3xl);
+}
+
+/* ========================================
+   TABLET (640px ve uzeri)
+======================================== */
+@media (min-width: 640px) {
+  section {
+    padding: var(--space-3xl) var(--space-xl);
+  }
+
+  /* Hakkimda: yatay duzen */
+  .about-content {
+    flex-direction: row;
+    text-align: left;
+    align-items: center;
+    gap: var(--space-3xl);
+  }
+
+  .about-content .skill-tags {
+    justify-content: flex-start;
+  }
+
+  .about-content figure {
+    flex-shrink: 0;
+  }
+
+  /* Form butonu tam genislik olmaktan cikar */
+  button[type="submit"] {
+    width: auto;
+  }
+}
+
+/* ========================================
+   MASAUSTU (1024px ve uzeri)
+======================================== */
+@media (min-width: 1024px) {
+
+  /* Icerik genisligi sinirla */
+  main {
+    max-width: 1280px;
+    margin: 0 auto;
+  }
+
+  section {
+    padding: var(--space-3xl) var(--space-xl);
+  }
+
+  /* Proje kartlari en az 3 sutun */
+  .project-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
 }
