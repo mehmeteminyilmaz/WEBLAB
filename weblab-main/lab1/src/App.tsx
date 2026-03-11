@@ -1,176 +1,217 @@
+import { useState, useEffect } from 'react';
+import Button from './components/Button';
+import Input from './components/Input';
+import Card from './components/Card';
 import qrCodeImg from './assets/qr-code-pwa.png';
 
 function App() {
-    return (
-        <>
-            <a href="#main-content" className="skip-link">Ana içeriğe atla</a>
+    const [isDarkMode, setIsDarkMode] = useState(true);
 
-            <header>
-                <div className="site-title">Emin'in Portfolyosu</div>
-                <nav aria-label="Ana navigasyon">
-                    <ul>
-                        <li><a href="#hakkimda">Hakkımda</a></li>
-                        <li><a href="#projeler">Projeler</a></li>
-                        <li><a href="#iletisim">İletişim</a></li>
-                    </ul>
-                </nav>
+    useEffect(() => {
+        if (isDarkMode) {
+            document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.remove('dark');
+        }
+    }, [isDarkMode]);
+
+    const projects = [
+        {
+            title: "Expense Tracker",
+            description: "Full-stack expense tracking app with real-time Firebase Firestore database, category filtering, and Chart.js visualizations built with React.",
+            image: "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?w=600&h=400&fit=crop",
+            tags: ["JavaScript", "React", "Firebase"],
+            link: "https://github.com/mehmeteminyilmaz/expense-tracker"
+        },
+        {
+            title: "Film Recommender",
+            description: "AI-powered personalized movie recommendation engine that suggests films based on your watch history, mood, and genre preferences.",
+            image: "https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?w=600&h=400&fit=crop",
+            tags: ["JavaScript", "React", "Gemini API"],
+            link: "https://github.com/mehmeteminyilmaz/film-recommender"
+        },
+        {
+            title: "Smart Note Summarizer",
+            description: "AI-powered text summarizer built with React and Google Gemini API.",
+            image: "https://images.unsplash.com/photo-1517842645767-c639042777db?w=600&h=400&fit=crop",
+            tags: ["JavaScript", "React", "Gemini API"],
+            link: "https://github.com/mehmeteminyilmaz/smart-note-summarizer"
+        },
+        {
+            title: "News Bias Detector",
+            description: "AI-powered news bias detector that analyzes political leaning, bias score, and manipulative language using React and Google Gemini API.",
+            image: "https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=600&h=400&fit=crop",
+            tags: ["JavaScript", "React", "Gemini API"],
+            link: "https://github.com/mehmeteminyilmaz/news-bias-detector"
+        },
+        {
+            title: "CommitGen AI",
+            description: "AI powered tool for generating Git commit messages seamlessly.",
+            image: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=600&h=400&fit=crop",
+            tags: ["TypeScript", "AI"],
+            link: "https://github.com/mehmeteminyilmaz/commitgen-ai"
+        },
+        {
+            title: "QR Code PWA App",
+            description: "React tabanlı, çevrimdışı çalışabilen (PWA) modern bir QR kod üretici ve okuyucu.",
+            image: qrCodeImg,
+            tags: ["JavaScript", "React", "PWA"],
+            link: "https://github.com/mehmeteminyilmaz/qr-code-pwa-app"
+        },
+        {
+            title: "VeloPath",
+            description: "AI destekli adaptif proje yol haritası sistemi.",
+            image: "https://images.unsplash.com/photo-1506784365847-bbad939e9335?w=600&h=400&fit=crop",
+            tags: ["AI"],
+            link: "https://github.com/mehmeteminyilmaz/VeloPath"
+        }
+    ];
+
+    return (
+        <div className="min-h-screen bg-bg text-text selection:bg-primary/30 selection:text-primary-foreground font-sans transition-colors duration-300">
+            <a href="#main-content" className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 bg-primary text-white p-3 rounded-lg z-50">
+                Ana içeriğe atla
+            </a>
+
+            <button
+                onClick={() => setIsDarkMode(!isDarkMode)}
+                className="fixed top-6 right-6 z-50 p-3 rounded-full bg-surface/80 backdrop-blur-md border border-border shadow-lg hover:scale-110 active:scale-95 transition-all group"
+                aria-label="Temayı Değiştir"
+            >
+                {isDarkMode ? (
+                    <span className="text-xl group-hover:rotate-12 transition-transform">☀️</span>
+                ) : (
+                    <span className="text-xl group-hover:-rotate-12 transition-transform">🌙</span>
+                )}
+            </button>
+
+            <header className="sticky top-0 z-40 bg-bg/80 backdrop-blur-md border-b border-border transition-colors">
+                <div className="max-w-6xl mx-auto px-6 py-4 flex flex-col md:flex-row justify-between items-center gap-4">
+                    <h1 className="text-xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
+                        Emin'in Portfolyosu
+                    </h1>
+                    <nav aria-label="Ana navigasyon">
+                        <ul className="flex flex-wrap gap-2">
+                            {['Hakkımda', 'Projeler', 'İletişim'].map((item) => (
+                                <li key={item}>
+                                    <a
+                                        href={`#${item.toLowerCase().replace('ı', 'i')}`}
+                                        className="px-4 py-2 rounded-lg text-sm font-medium hover:bg-surface border border-transparent hover:border-border transition-all"
+                                    >
+                                        {item}
+                                    </a>
+                                </li>
+                            ))}
+                            <li>
+                                <a
+                                    href="/uikit"
+                                    className="px-4 py-2 rounded-lg text-sm font-bold text-primary hover:bg-primary/10 transition-all"
+                                >
+                                    UI Kit
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
             </header>
 
-            <main id="main-content">
-                <section id="hakkimda">
-                    <h2>Hakkımda</h2>
-                    <div className="about-content">
-                        <div>
-                            <p>Ben Mehmet Emin Yılmaz, yazılım geliştirme alanına ilgi duyan ve kendini sürekli geliştirmeye
-                                çalışan bir yazılım mühendisliği öğrencisiyim. Özellikle web ve mobil uygulama geliştirme
-                                alanlarında projeler üretmeye odaklanıyorum. Programlama alanında C, C#, Java ve Python
-                                dilleriyle çalışabilmekteyim. Ayrıca HTML, CSS ve JavaScript kullanarak modern, kullanıcı dostu
-                                ve mobil uyumlu web uygulamaları geliştirme konusunda deneyim sahibiyim.</p>
-                            <p>Proje geliştirme süreçlerinde analiz, tasarım ve uygulama aşamalarına önem veriyor; kullanıcı
-                                ihtiyaçlarını dikkate alarak işlevsel ve sürdürülebilir sistemler oluşturmayı hedefliyorum. Aynı
-                                zamanda mobil uygulama geliştirme alanında da kendimi geliştirmekte ve farklı platformlarda
-                                çalışabilecek projeler üretmeye yönelik çalışmalar yapmaktayım.</p>
-                            <p>Yazılım alanındaki güncel teknolojileri takip ederek teknik bilgi ve becerilerimi sürekli
-                                geliştirmeyi, yenilikçi ve etkili yazılım çözümleri üreten bir geliştirici olmayı hedefliyorum.
-                            </p>
-                            <ul className="skill-tags" role="list" aria-label="Beceri etiketleri">
-                                <li>HTML5</li>
-                                <li>CSS3</li>
-                                <li>JavaScript</li>
-                                <li>TypeScript</li>
-                                <li>React</li>
-                                <li>Google Gemini API</li>
-                                <li>Git</li>
+            <main id="main-content" className="max-w-6xl mx-auto px-6 py-12 space-y-24">
+                <section id="hakkimda" className="scroll-mt-24">
+                    <div className="flex flex-col md:flex-row gap-12 items-center md:items-start text-center md:text-left">
+                        <div className="space-y-6 flex-1">
+                            <h2 className="text-4xl font-extrabold tracking-tight">Hakkımda</h2>
+                            <div className="space-y-4 text-text/80 text-lg leading-relaxed max-w-3xl">
+                                <p>
+                                    Ben Mehmet Emin Yılmaz, yazılım geliştirme alanına ilgi duyan ve kendini sürekli geliştirmeye
+                                    çalışan bir yazılım mühendisliği öğrencisiyim. Özellikle web ve mobil uygulama geliştirme
+                                    alanlarında projeler üretmeye odaklanıyorum.
+                                </p>
+                                <p>
+                                    Proje geliştirme süreçlerinde analiz, tasarım ve uygulama aşamalarına önem veriyor; kullanıcı
+                                    ihtiyaçlarını dikkate alarak işlevsel ve sürdürülebilir sistemler oluşturmayı hedefliyorum.
+                                </p>
+                            </div>
+                            <ul className="flex flex-wrap justify-center md:justify-start gap-2 pt-4" role="list" aria-label="Beceri etiketleri">
+                                {['HTML5', 'CSS3', 'JavaScript', 'TypeScript', 'React', 'Gemini API', 'Git', 'Tailwind'].map(skill => (
+                                    <li key={skill} className="px-3 py-1 bg-primary/10 text-primary border border-primary/20 rounded-full text-sm font-semibold">
+                                        {skill}
+                                    </li>
+                                ))}
                             </ul>
                         </div>
                     </div>
                 </section>
 
-                <section id="projeler">
-                    <h2>Projelerim</h2>
-                    <div className="project-grid">
-
-                        <article className="project-card">
-                            <img src="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?w=600&h=400&fit=crop"
-                                alt="Expense Tracker" />
-                            <h3>Expense Tracker</h3>
-                            <p>Full-stack expense tracking app with real-time Firebase Firestore database, category filtering,
-                                and Chart.js visualizations built with React.</p>
-                            <ul className="skill-tags">
-                                <li>JavaScript</li>
-                                <li>React</li>
-                                <li>Firebase</li>
-                            </ul>
-                            <a href="https://github.com/mehmeteminyilmaz/expense-tracker" target="_blank"
-                                rel="noopener noreferrer">Projeyi İncele</a>
-                        </article>
-
-                        <article className="project-card">
-                            <img src="https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?w=600&h=400&fit=crop"
-                                alt="Film Recommender" />
-                            <h3>Film Recommender</h3>
-                            <p>AI-powered personalized movie recommendation engine that suggests films based on your watch
-                                history, mood, and genre preferences.</p>
-                            <ul className="skill-tags">
-                                <li>JavaScript</li>
-                                <li>React</li>
-                                <li>Gemini API</li>
-                            </ul>
-                            <a href="https://github.com/mehmeteminyilmaz/film-recommender" target="_blank"
-                                rel="noopener noreferrer">Projeyi İncele</a>
-                        </article>
-
-                        <article className="project-card">
-                            <img src="https://images.unsplash.com/photo-1517842645767-c639042777db?w=600&h=400&fit=crop"
-                                alt="Smart Note Summarizer" />
-                            <h3>Smart Note Summarizer</h3>
-                            <p>AI-powered text summarizer built with React and Google Gemini API.</p>
-                            <ul className="skill-tags">
-                                <li>JavaScript</li>
-                                <li>React</li>
-                                <li>Gemini API</li>
-                            </ul>
-                            <a href="https://github.com/mehmeteminyilmaz/smart-note-summarizer" target="_blank"
-                                rel="noopener noreferrer">Projeyi İncele</a>
-                        </article>
-
-                        <article className="project-card">
-                            <img src="https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=600&h=400&fit=crop"
-                                alt="News Bias Detector" />
-                            <h3>News Bias Detector</h3>
-                            <p>AI-powered news bias detector that analyzes political leaning, bias score, and manipulative
-                                language using React and Google Gemini API.</p>
-                            <ul className="skill-tags">
-                                <li>JavaScript</li>
-                                <li>React</li>
-                                <li>Gemini API</li>
-                            </ul>
-                            <a href="https://github.com/mehmeteminyilmaz/news-bias-detector" target="_blank"
-                                rel="noopener noreferrer">Projeyi İncele</a>
-                        </article>
-
-                        <article className="project-card">
-                            <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=600&h=400&fit=crop"
-                                alt="CommitGen AI" />
-                            <h3>CommitGen AI</h3>
-                            <p>AI powered tool for generating Git commit messages seamlessly.</p>
-                            <ul className="skill-tags">
-                                <li>TypeScript</li>
-                                <li>AI</li>
-                            </ul>
-                            <a href="https://github.com/mehmeteminyilmaz/commitgen-ai" target="_blank"
-                                rel="noopener noreferrer">Projeyi İncele</a>
-                        </article>
-
-                        <article className="project-card">
-                            <img src={qrCodeImg} alt="QR Code PWA App" />
-                            <h3>QR Code PWA App</h3>
-                            <p>React tabanlı, çevrimdışı çalışabilen (PWA) modern bir QR kod üretici ve okuyucu.</p>
-                            <ul className="skill-tags">
-                                <li>JavaScript</li>
-                                <li>React</li>
-                                <li>PWA</li>
-                            </ul>
-                            <a href="https://github.com/mehmeteminyilmaz/qr-code-pwa-app" target="_blank"
-                                rel="noopener noreferrer">Projeyi İncele</a>
-                        </article>
-
-                        <article className="project-card">
-                            <img src="https://images.unsplash.com/photo-1506784365847-bbad939e9335?w=600&h=400&fit=crop"
-                                alt="VeloPath" />
-                            <h3>VeloPath</h3>
-                            <p>AI destekli adaptif proje yol haritası sistemi.</p>
-                            <ul className="skill-tags">
-                                <li>AI</li>
-                            </ul>
-                            <a href="https://github.com/mehmeteminyilmaz/VeloPath" target="_blank"
-                                rel="noopener noreferrer">Projeyi İncele</a>
-                        </article>
-
+                <section id="projeler" className="scroll-mt-24 space-y-12">
+                    <div className="text-center md:text-left space-y-2">
+                        <h2 className="text-4xl font-extrabold tracking-tight">Projelerim</h2>
+                        <p className="text-text/60">Geliştirdiğim bazı öne çıkan çalışmalar.</p>
+                    </div>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                        {projects.map((project, idx) => (
+                            <Card
+                                key={idx}
+                                title={project.title}
+                                image={project.image}
+                                variant="elevated"
+                                footer={
+                                    <Button
+                                        variant="ghost"
+                                        size="sm"
+                                        className="w-full"
+                                        onClick={() => window.open(project.link, '_blank')}
+                                    >
+                                        Projeyi İncele
+                                    </Button>
+                                }
+                            >
+                                <div className="space-y-4">
+                                    <p className="line-clamp-3">{project.description}</p>
+                                    <div className="flex flex-wrap gap-1.5 pt-2">
+                                        {project.tags.map(tag => (
+                                            <span key={tag} className="text-[10px] uppercase tracking-wider font-bold px-2 py-0.5 bg-muted/20 rounded border border-border">
+                                                {tag}
+                                            </span>
+                                        ))}
+                                    </div>
+                                </div>
+                            </Card>
+                        ))}
                     </div>
                 </section>
 
-                <section id="iletisim">
-                    <h2>İletişim</h2>
-                    <form action="#" method="POST" noValidate>
-                        <fieldset>
-                            <legend>Bana Mesaj Gönderin</legend>
-                            <div className="form-group">
-                                <label htmlFor="name">Ad Soyad:</label>
-                                <input type="text" id="name" name="name" required minLength={2} aria-describedby="name-error" />
-                                <small id="name-error" className="error-msg" role="alert"></small>
-                            </div>
-                            <button type="submit">Gönder</button>
-                        </fieldset>
+                <section id="iletisim" className="scroll-mt-24 max-w-xl mx-auto w-full text-center space-y-8">
+                    <div className="space-y-2">
+                        <h2 className="text-4xl font-extrabold tracking-tight">İletişim</h2>
+                        <p className="text-text/60">Bir projeniz var mı? Benimle iletişime geçin.</p>
+                    </div>
+                    <form className="p-8 bg-surface border border-border rounded-2xl shadow-xl space-y-6 text-left" onSubmit={(e) => e.preventDefault()}>
+                        <Input id="name" label="Ad Soyad" placeholder="Ahmet Yılmaz" required />
+                        <Input id="email" label="E-posta" type="email" placeholder="ahmet@ornek.com" required />
+                        <div className="space-y-1">
+                            <label htmlFor="message" className="block text-sm font-medium text-text/80">Mesajınız</label>
+                            <textarea
+                                id="message"
+                                rows={5}
+                                className="w-full px-3 py-2 rounded-lg border border-border focus:ring-2 focus:ring-primary/50 focus:outline-none bg-bg text-text transition-all hover:border-muted"
+                                placeholder="Mesajınızı buraya yazın..."
+                            ></textarea>
+                        </div>
+                        <Button type="submit" className="w-full shadow-lg shadow-primary/20" size="lg">
+                            Gönder
+                        </Button>
                     </form>
                 </section>
             </main>
 
-            <footer>
-                <p>&copy; 2026 Emin. Tüm hakları saklıdır.</p>
+            <footer className="mt-24 py-12 border-t border-border bg-surface/30 text-center space-y-4">
+                <p className="font-bold text-primary">Mehmet Emin Yılmaz</p>
+                <p className="text-text/40 text-sm">
+                    &copy; {new Date().getFullYear()} Emin. Tüm hakları saklıdır.
+                </p>
             </footer>
-        </>
-    )
+        </div>
+    );
 }
 
-export default App
+export default App;
