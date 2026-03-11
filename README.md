@@ -1,4 +1,4 @@
-Web LAB-1 & LAB-2: Semantik ve Erişilebilir Portföy
+# 🛠️ Web LAB-1 & LAB-2: Semantik ve Erişilebilir Portföy
 
 📌 Proje Hakkında
 
