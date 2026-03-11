@@ -79,9 +79,9 @@ function App() {
                 aria-label="Temayı Değiştir"
             >
                 {isDarkMode ? (
-                    <span className="text-xl group-hover:rotate-12 transition-transform">☀️</span>
+                    <span className="text-xl group-hover:rotate-12 transition-transform">🌙</span>
                 ) : (
-                    <span className="text-xl group-hover:-rotate-12 transition-transform">🌙</span>
+                    <span className="text-xl group-hover:-rotate-12 transition-transform">☀️</span>
                 )}
             </button>
 
@@ -117,10 +117,10 @@ function App() {
 
             <main id="main-content" className="max-w-6xl mx-auto px-6 py-12 space-y-24">
                 <section id="hakkimda" className="scroll-mt-24">
-                    <div className="flex flex-col md:flex-row gap-12 items-center md:items-start text-center md:text-left">
-                        <div className="space-y-6 flex-1">
+                    <div className="flex flex-col gap-12 items-center text-center">
+                        <div className="space-y-6 max-w-3xl">
                             <h2 className="text-4xl font-extrabold tracking-tight">Hakkımda</h2>
-                            <div className="space-y-4 text-text/80 text-lg leading-relaxed max-w-3xl">
+                            <div className="space-y-4 text-text/80 text-lg leading-relaxed">
                                 <p>
                                     Ben Mehmet Emin Yılmaz, yazılım geliştirme alanına ilgi duyan ve kendini sürekli geliştirmeye
                                     çalışan bir yazılım mühendisliği öğrencisiyim. Özellikle web ve mobil uygulama geliştirme
@@ -131,7 +131,7 @@ function App() {
                                     ihtiyaçlarını dikkate alarak işlevsel ve sürdürülebilir sistemler oluşturmayı hedefliyorum.
                                 </p>
                             </div>
-                            <ul className="flex flex-wrap justify-center md:justify-start gap-2 pt-4" role="list" aria-label="Beceri etiketleri">
+                            <ul className="flex flex-wrap justify-center gap-2 pt-4" role="list" aria-label="Beceri etiketleri">
                                 {['HTML5', 'CSS3', 'JavaScript', 'TypeScript', 'React', 'Gemini API', 'Git', 'Tailwind'].map(skill => (
                                     <li key={skill} className="px-3 py-1 bg-primary/10 text-primary border border-primary/20 rounded-full text-sm font-semibold">
                                         {skill}
@@ -143,9 +143,9 @@ function App() {
                 </section>
 
                 <section id="projeler" className="scroll-mt-24 space-y-12">
-                    <div className="text-center md:text-left space-y-2">
+                    <div className="flex flex-col items-center text-center space-y-4">
                         <h2 className="text-4xl font-extrabold tracking-tight">Projelerim</h2>
-                        <p className="text-text/60">Geliştirdiğim bazı öne çıkan çalışmalar.</p>
+                        <p className="text-muted text-lg">Geliştirdiğim bazı öne çıkan çalışmalar.</p>
                     </div>
                     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
                         {projects.map((project, idx) => (
@@ -181,9 +181,9 @@ function App() {
                 </section>
 
                 <section id="iletisim" className="scroll-mt-24 max-w-xl mx-auto w-full text-center space-y-8">
-                    <div className="space-y-2">
+                    <div className="space-y-4">
                         <h2 className="text-4xl font-extrabold tracking-tight">İletişim</h2>
-                        <p className="text-text/60">Bir projeniz var mı? Benimle iletişime geçin.</p>
+                        <p className="text-muted text-lg">Bir projeniz var mı? Benimle iletişime geçin.</p>
                     </div>
                     <form className="p-8 bg-surface border border-border rounded-2xl shadow-xl space-y-6 text-left" onSubmit={(e) => e.preventDefault()}>
                         <Input id="name" label="Ad Soyad" placeholder="Ahmet Yılmaz" required />
@@ -205,8 +205,7 @@ function App() {
             </main>
 
             <footer className="mt-24 py-12 border-t border-border bg-surface/30 text-center space-y-4">
-                <p className="font-bold text-primary">Mehmet Emin Yılmaz</p>
-                <p className="text-text/40 text-sm">
+                <p className="text-muted text-sm">
                     &copy; {new Date().getFullYear()} Emin. Tüm hakları saklıdır.
                 </p>
             </footer>

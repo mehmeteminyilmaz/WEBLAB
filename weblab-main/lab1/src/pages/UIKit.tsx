@@ -6,12 +6,12 @@ import Alert from '../components/Alert';
 export default function UIKit() {
     return (
         <div className="min-h-screen bg-bg text-text p-8 space-y-16">
-            <header className="max-w-6xl mx-auto space-y-4">
+            <header className="max-w-6xl mx-auto flex flex-col items-center text-center space-y-4">
                 <a href="/" className="text-primary hover:underline flex items-center gap-2">
                     ← Portfolyoya Dön
                 </a>
                 <h1 className="text-5xl font-extrabold tracking-tight">UI Kit</h1>
-                <p className="text-text/60 text-lg">LAB-4 kapsamında oluşturulan bileşen kütüphanesi ve varyantları.</p>
+                <p className="text-muted text-lg">Bileşen kütüphanesi ve varyantları.</p>
             </header>
 
             <main className="max-w-6xl mx-auto space-y-16">
@@ -88,7 +88,7 @@ export default function UIKit() {
             </main>
 
             <footer className="max-w-6xl mx-auto pt-16 border-t border-border text-text/40 text-sm pb-8">
-                UI Kit v1.0 - Web Tasarımı ve Programlama LAB-4
+                UI Kit v1.0 - Web Tasarımı ve Programlama
             </footer>
         </div>
     );
