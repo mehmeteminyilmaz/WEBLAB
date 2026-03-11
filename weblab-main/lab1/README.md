@@ -1,4 +1,4 @@
-# Emin'in Portfolyosu - Web Tasarımı ve Programlama LAB-3
+# Emin'in Portfolyosu - Web Tasarımı ve Programlama LAB-3 & LAB-4
 
 Bu proje, Web Tasarımı ve Programlama dersi kapsamında geliştirilen kişisel bir portfolyo web sitesidir. **LAB-3** ile birlikte proje tamamen responsive (duyarlı) ve modern bir tasarıma kavuşturulmuştur.
 
@@ -29,7 +29,28 @@ Projenin medya sorguları (Media Queries) önce mobil görünüm esas alınarak 
 ---
 
 ## 📷 Ekran Görüntüleri ve Performans
-Projeye ait **Desktop (1280px)**, **Tablet (768px)** ve **Mobile (500px)** genişliklerindeki ekran görüntülerine `screenshots/` klasöründen ulaşabilirsiniz.
+Projenize ait tüm görsellere `screenshots/` klasöründen veya her laboratuvar için hazırlanan `walkthrough.md` belgelerinden ulaşabilirsiniz.
+
+---
+
+## 🔥 Modern Bileşen Mimarisi (LAB-4)
+
+LAB-4 kapsamında proje **Utility-First CSS** yaklaşımıyla Tailwind CSS v4'e taşınmış ve modüler bir yapıya kavuşturulmuştur.
+
+### 1. Tailwind CSS v4 ve Dinamik Tema
+- Proje altyapısı `@tailwindcss/vite` ile modernize edildi.
+- `index.css` içerisinde tanımlanan CSS değişkenleri ve Tailwind'in yeni `@theme` blokları sayesinde **Karanlık Tema (Dark Mode)** desteği tam kararlı hale getirildi.
+
+### 2. Yeniden Kullanılabilir Bileşenler (Components)
+- **Button, Input, Card, Alert** gibi temel UI bileşenleri geliştirildi.
+- Her bileşen; `primary`, `secondary`, `success`, `error` gibi fonksiyonel varyantlara ve farklı boyut (sm, md, lg) özelliklerine sahiptir.
+
+### 3. Portfolyo Modernizasyonu
+- Tüm sayfa yapısı Tailwind sınıfları ile yeniden düzenlendi.
+- Layout ve hizalama sorunları giderildi; Hakkımda ve Projelerim bölümleri tam ortalanmış, modern bir grid yapısına taşındı.
+
+### 4. UI Kit Sayfası
+- Geliştirilen tüm bileşenlerin canlı örneklerini ve kullanım şekillerini sergileyen kapsamlı bir `/uikit` sayfası projeye dahil edildi.
 
 ### LAB-2 Erişilebilirlik Raporu (Geçmiş)
 Lighthouse denetimi sonucunda %96 erişilebilirlik puanı elde edilmiştir.

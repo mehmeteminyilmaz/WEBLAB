@@ -52,3 +52,24 @@ Bu projede LAB-3 kapsamında **Mobile-First** (Önce Mobil) mantığıyla modern
 - Tasarım aşamalarında alınan ve onaylanan tasarımsal kararlar projedeki `CSS-KARARLARI.md` belgesine kaydedildi.
 - Ekranların 3 ayrı portresinin (Desktop, Tablet, Mobile) tam ekran görüntüleri `screenshots/` klasörüne dahil edildi.
 - **6 adım (commit)** işlenerek uzak depo ile senkronize edildi (`feature/responsive-layout` adında yeni dalda çalışılıp merge işlemlerine hazır bırakıldı).
+
+---
+
+# ⚡ Web LAB-4: Tailwind CSS v4 & Bileşen Yaklaşımı
+
+Bu projede LAB-4 kapsamında **Tailwind CSS v4** entegrasyonu gerçekleştirilmiş ve portfolyo sitesi **Bileşen Tabanlı (Component-Based)** bir mimariye taşınmıştır.
+
+## 🚀 Öne Çıkan Geliştirmeler
+
+- **Tailwind CSS v4 Entegrasyonu**: Proje altyapısı tamamen Tailwind CSS v4'e taşındı. `@tailwindcss/vite` eklentisi ile modern derleme süreci sağlandı.
+- **Bileşen Tabanlı Tasarım (UI Kit)**: Sitedeki tüm arayüz elemanları tekrar kullanılabilir bileşenler (`Button`, `Input`, `Card`, `Alert`) olarak yeniden inşa edildi.
+- **Gelişmiş Karanlık Tema (Dark Mode)**: LAB-3'teki tema yapısı, Tailwind v4'ün `@theme dark` özellikleri ile standardize edildi. Işık ve karanlık temalar arasında kusursuz bir geçiş sağlandı.
+- **Tasarım İyileştirmeleri ve Merkezleme**: "Hakkımda" ve "Projelerim" gibi ana bölümlerin başlıkları ve içerikleri, modern tasarım prensiplerine uygun olarak sayfada tam ortalandı.
+- **UI Kit Galerisi**: Tüm bileşenlerin farklı varyantlarını (renk, boyut, durum) sergileyen özel bir `/uikit` sayfası eklendi.
+- **Erişilebilirlik ve Temiz Kod**: Eski CSS kodları tamamen temizlenerek Tailwind'in utility-first yaklaşımı ile daha performanslı ve yönetilebilir bir kod yapısı oluşturuldu.
+
+## 📁 Teslim Edilenler
+- `/src/components`: Tekrar kullanılabilir UI bileşenleri.
+- `/src/pages/UIKit.tsx`: Bileşen kütüphanesi sayfası.
+- En az 6-8 anlamlı commit ile Git süreci yönetildi (`feature/tailwind-ui-kit` dalı).
+- Güncel ekran görüntüleri ve walkthrough belgeleri hazırlandı.
